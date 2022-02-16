@@ -7,17 +7,15 @@ int numParticles = 30000;
 float totalEnergy = 1;
 
 ArrayList<Spark> bolt = new ArrayList<Spark>();
-;
 
 void setup()
 {
   size(800, 800);
   particles = new Particle[numParticles];
 
-
-  for (int i = 0; i < 7; i++)
+  for (int i = 0; i < 1; i++)
   {
-    bolt.add(new Spark(10000, new PVector(cos(TWO_PI/7*i)*width/2, sin(TWO_PI/7*i)*width/2), PI-(TWO_PI/7*i)));
+    bolt.add(new Spark(10000, new PVector(width/2, 0), 0));
   }
 
 
@@ -33,7 +31,7 @@ void updateLightning(float splitChance, float splitEnergyTransfer, float splitEn
   ArrayList<Spark> ns = new ArrayList<Spark>();
 
   totalEnergy = 0;
-
+  //int n = 0;
   for (Spark b : bolt)
   {
     if (b.energy > 0)
@@ -55,8 +53,9 @@ void updateLightning(float splitChance, float splitEnergyTransfer, float splitEn
         b.energy *= splitEnergyRemaining;
       }
     }
-
+    //stroke(360*n/bolt.size(),100,100);
     b.draw();
+    //n++;
   }
 
   for (Spark s : ns)
@@ -69,14 +68,14 @@ int frameNum = 1132;
 
 void draw()
 {
-  translate(width/2,height/2);
+  //translate(width/2,height/2);
   //background(115, 77, 38);
   //stroke(153, 153, 102);
 
   //background(0, 0, 10);
   //stroke(0, 180, 250);
-  
-  background(150);
+  //colorMode(HSB,360,100,100);
+  background(200);
   stroke(0);
 
   noFill();
